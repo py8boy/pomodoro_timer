@@ -26,19 +26,65 @@ def geo_config_and_central(root, width, height):
 
 # função para mostrar o horário na janela root
 def time_now():
-    string = strftime('%H:%M:%S')
+    string = strftime('%H:%M:%S %p')
     time_container.config(text = string)
     time_container.after(1000, time_now)
 
 
+def alarm():
+    frequence = 2800
+    how_long = 200
+    for c in range(0, 20):
+        winsound.Beep(frequence, how_long)
+
+
+def start_pomodoro():
+    sleep(10)
+    what_do['text'] = 'Fim do 1º Pomodoro, pode descansar!'
+    alarm()
+    sleep(5)
+    what_do['text'] = 'Início do 2º Pomodoro, vamos estudar!'
+    alarm()
+
+    sleep(10)
+    what_do['text'] = 'Fim do 2º Pomodoro, pode descansar!'
+    alarm()
+    sleep(5)
+    what_do['text'] = 'Início do 3º Pomodoro, vamos estudar!'
+    alarm()
+
+    sleep(10)
+    what_do['text'] = 'Fim do 3º Pomodoro, pode descansar!'
+    alarm()
+    sleep(5)
+    what_do['text'] = 'Início do 4º Pomodoro, vamos estudar!'
+    alarm()
+
+    sleep(10)
+    what_do['text'] = 'Fim do 4º Pomodoro, pode descansar!'
+    alarm()
+    sleep(5)
+    what_do['text'] = 'Parabéns, você concluiu 2 horas de estudo. Reinicie o programa para estudar mais!'
+    alarm()
+
+
+
 root = Tk()
 root.title("Pomodoro's Timer")
-geo_config_and_central(root, 400, 150)
+geo_config_and_central(root, 750, 350)
+root.resizable(False, False)
 
-time_container = Label(root, font = ('calibri', 40, 'bold'), 
+time_container = Label(root, font = ('calibri', 50, 'bold'), 
                              background = 'blue',
                              foreground = 'white')
 time_container.pack(anchor = 'center')
 time_now()
+
+what_do = Label(root, text = 'This method consists of 2 hours of study. Every 25 minutes of \n' +
+                             'total concentration you rest for 5.', font = ('calibri', 20))
+what_do.pack(anchor = 'center')
+
+init_button = Button(root, text = 'Start a Pomodoro!', font = ('calibri', 20), command = start_pomodoro)
+init_button.pack(anchor = 'center')
 
 root.mainloop()
