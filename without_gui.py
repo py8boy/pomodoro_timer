@@ -8,11 +8,13 @@ def line():                                       # criei a função line() apen
     print()
 
 def alarm():                                      # esta função é responsável pela emissão dos alarmes
+
+
     fr = 2600                                     # a variavel fr armazena a frequencia do alarme (37 ate 3200), quanto maior mais agudo
-    how_log = 2000                                   # tempo de duração do alarme em milissegundos
-    winsound.Beep(fr, how_long)                       # chamando o alarme
+    how_long = 2000                                   # tempo de duração do alarme em milissegundos
 
-
+    for c in range(0, 3):
+        winsound.Beep(fr, how_long)                 # chamando o alarme
 def entry_task():                                   # função para entrada de tarefas e adicionar na lista
     while(True):
         task_var = input('  -> ')

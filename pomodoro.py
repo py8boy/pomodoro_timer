@@ -34,7 +34,7 @@ def time_now():
 def alarm():
     frequence = 2800
     how_long = 200
-    for c in range(0, 20):
+    for c in range(0, 2):
         winsound.Beep(frequence, how_long)
 
 
